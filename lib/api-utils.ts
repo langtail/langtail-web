@@ -3,7 +3,7 @@
  */
 export function getApiUrl(path: string) {
   const baseUrl =
-    process.env.NEXT_PUBLIC_VERCEL === '1'
+    process.env.NEXT_PUBLIC_NODE_ENV === 'production'
       ? `https://${process.env.NEXT_PUBLIC_PROJECT_PRODUCTION_URL}`
       : `http://${process.env.NEXT_PUBLIC_PROJECT_PRODUCTION_URL}`
 
