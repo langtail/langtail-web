@@ -1,11 +1,6 @@
 'use client'
 
-import Image from 'next/image'
-
-interface AssetImageProps
-  extends Omit<React.ComponentProps<typeof Image>, 'src'> {
-  src: string
-}
+interface AssetImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
 export function AssetImage({ src, ...props }: AssetImageProps) {
   const assetPrefix =
@@ -13,13 +8,5 @@ export function AssetImage({ src, ...props }: AssetImageProps) {
       ? `https://${process.env.NEXT_PUBLIC_PROJECT_PRODUCTION_URL}`
       : `http://${process.env.NEXT_PUBLIC_PROJECT_PRODUCTION_URL}`
 
-  return (
-    <Image
-      src={`${assetPrefix}${src}`}
-      {...props}
-      width={props.width || 128}
-      height={props.height || 128}
-      unoptimized={false}
-    />
-  )
+  return <img src={`${assetPrefix}${src}`} {...props} />
 }
