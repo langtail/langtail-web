@@ -5,7 +5,7 @@ import { pressStart2P } from './fonts'
 import { Navbar } from '@/components/navbar'
 import { Toaster } from '@/components/ui/toaster'
 
-import { assetPrefix } from '@/components/ui/asset-image'
+import { assetPrefix } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Langtail - Break My Prompt!',
