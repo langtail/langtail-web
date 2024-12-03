@@ -1,47 +1,50 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react'
+import { cn } from '@/lib/utils'
+import { AssetImage } from './ui/asset-image'
 
-type NinjaState = 'idle' | 'attack' | 'run';
+type NinjaState = 'idle' | 'attack' | 'run'
 
 interface NinjaSpriteProps {
-  state: NinjaState;
-  className?: string;
+  state: NinjaState
+  className?: string
 }
 
 export function NinjaSprite({ state, className = '' }: NinjaSpriteProps) {
-  const [frame, setFrame] = useState(0);
-  
+  const [frame, setFrame] = useState(0)
+
   const frames = {
     idle: 4,
     attack: 3,
-    run: 6
-  };
+    run: 6,
+  }
 
   const frameSpeed = {
     idle: 300,
     attack: 150,
-    run: 100
-  };
+    run: 100,
+  }
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFrame(current => (current + 1) % frames[state]);
-    }, frameSpeed[state]);
+      setFrame((current) => (current + 1) % frames[state])
+    }, frameSpeed[state])
 
-    return () => clearInterval(interval);
-  }, [state]);
+    return () => clearInterval(interval)
+  }, [state])
 
   return (
-    <div className={cn(
-      'relative transition-transform duration-300',
-      state === 'attack' && 'scale-125',
-      state === 'run' && 'translate-x-4',
-      className
-    )}>
+    <div
+      className={cn(
+        'relative transition-transform duration-300',
+        state === 'attack' && 'scale-125',
+        state === 'run' && 'translate-x-4',
+        className
+      )}
+    >
       <div className="relative w-32 h-32">
-        <img 
+        <AssetImage
           src={`/images/${state}_${frame}.png`}
           alt={`Ninja ${state} animation`}
           className={cn(
@@ -51,7 +54,7 @@ export function NinjaSprite({ state, className = '' }: NinjaSpriteProps) {
             state === 'run' && 'animate-bounce'
           )}
           style={{
-            imageRendering: 'pixelated'
+            imageRendering: 'pixelated',
           }}
         />
         {state === 'attack' && (
@@ -59,5 +62,5 @@ export function NinjaSprite({ state, className = '' }: NinjaSpriteProps) {
         )}
       </div>
     </div>
-  );
+  )
 }

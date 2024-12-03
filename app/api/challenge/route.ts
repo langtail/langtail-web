@@ -112,3 +112,35 @@ export async function POST(req: Request) {
     )
   }
 }
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin':
+        process.env.ALLOWED_ORIGINS || 'http://localhost:3001',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400',
+    },
+  })
+}
+
+// Your existing route handlers should also include CORS headers
+export async function GET() {
+  return NextResponse.json(
+    {
+      /* your response data */
+    },
+    {
+      headers: {
+        'Access-Control-Allow-Origin':
+          process.env.ALLOWED_ORIGINS || 'http://localhost:3001',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    }
+  )
+}
+
+// Add similar headers to your POST, PUT, DELETE handlers if you have them
