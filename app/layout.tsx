@@ -5,6 +5,8 @@ import { pressStart2P } from './fonts'
 import { Navbar } from '@/components/navbar'
 import { Toaster } from '@/components/ui/toaster'
 
+import { assetPrefix } from '@/components/ui/asset-image'
+
 export const metadata: Metadata = {
   title: 'Langtail - Break My Prompt!',
   description:
@@ -27,6 +29,14 @@ export const metadata: Metadata = {
     siteName: 'Langtail',
     locale: 'en_US',
     type: 'website',
+    images: [
+      {
+        url: `${assetPrefix}/og.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Langtail - Break My Prompt!',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -34,6 +44,7 @@ export const metadata: Metadata = {
     description:
       'Test your prompt engineering skills against our ninja! Challenge yourself with our AI prompt engineering game and improve your skills.',
     creator: '@langtail',
+    images: [`${assetPrefix}/og.jpg`],
   },
   robots: {
     index: true,

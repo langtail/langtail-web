@@ -2,6 +2,11 @@
 
 interface AssetImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {}
 
+export const assetPrefix =
+  process.env.NEXT_PUBLIC_NODE_ENV === 'production'
+    ? `https://${process.env.NEXT_PUBLIC_PROJECT_PRODUCTION_URL}`
+    : `http://${process.env.NEXT_PUBLIC_PROJECT_PRODUCTION_URL}`
+
 export function AssetImage({ src, ...props }: AssetImageProps) {
   const assetPrefix =
     process.env.NEXT_PUBLIC_NODE_ENV === 'production'
