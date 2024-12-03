@@ -40,12 +40,24 @@ const nextConfig = {
           },
         ],
       },
+      {
+        source: '/images/:all*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ]
   },
   assetPrefix:
     process.env.NODE_ENV === 'production'
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : `http://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`,
+  images: {
+    domains: ['langtail-web.vercel.app'],
+  },
 }
 
 module.exports = nextConfig
