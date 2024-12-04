@@ -64,6 +64,7 @@ async function processSingleChallenge(
       },
     }),
     schema: z.object({
+      strict: z.boolean().default(true),
       analysis: z.object({
         explanation: z
           .string()
