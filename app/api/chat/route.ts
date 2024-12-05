@@ -10,8 +10,6 @@ export async function POST(req: Request) {
   try {
     const { messages, prompt, results } = await req.json()
 
-    console.log('messages', messages, 'prompt', prompt, 'results', results)
-
     const response = await streamText({
       model: langtail('white-ninja'),
       temperature: 0.5,
@@ -42,4 +40,34 @@ export async function POST(req: Request) {
       { status: 500 }
     )
   }
+}
+
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin':
+        process.env.ALLOWED_ORIGINS || 'http://localhost:3001',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Max-Age': '86400',
+    },
+  })
+}
+
+// Your existing route handlers should also include CORS headers
+export async function GET() {
+  return NextResponse.json(
+    {
+      /* your response data */
+    },
+    {
+      headers: {
+        'Access-Control-Allow-Origin':
+          process.env.ALLOWED_ORIGINS || 'http://localhost:3001',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    }
+  )
 }
