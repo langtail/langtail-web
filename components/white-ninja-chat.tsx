@@ -16,6 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { getApiUrl } from '@/lib/api-utils'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -73,7 +74,7 @@ export function WhiteNinjaChat({
   const [initialSent, setInitialSent] = useState(false)
   const { messages, input, handleSubmit, isLoading, setInput, append } =
     useChat({
-      api: '/api/chat',
+      api: getApiUrl('/api/chat'),
       body: { prompt, results },
       initialMessages: [
         {
