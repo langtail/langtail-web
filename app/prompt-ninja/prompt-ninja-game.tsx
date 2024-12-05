@@ -1,25 +1,36 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Sword, RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { NinjaSprite } from '@/components/ninja-sprite'
 import { PromptInput } from '@/components/prompt-input'
 import { ChallengeTable } from '@/components/challenge-table'
-import { CTASection } from '@/components/cta-section'
+import { WhiteNinjaSprite } from '@/components/white-ninja-sprite'
+import { StatsSection } from '@/components/stats-section'
 import type { ChallengeResult } from '@/lib/types'
 import { useToast } from '@/components/ui/use-toast'
 import { apiFetch } from '@/lib/api-utils'
+import { generateMockChallenge } from '@/lib/mock-data'
+import { useSearchParams } from 'next/navigation'
 
-export default function Home() {
+export function PromptNinjaGame() {
   const [prompt, setPrompt] = useState('')
+  const searchParams = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
   const [ninjaState, setNinjaState] = useState<'idle' | 'attack' | 'run'>(
     'idle'
   )
   const [results, setResults] = useState<ChallengeResult[]>([])
   const { toast } = useToast()
+
+  useEffect(() => {
+    const promptParam = searchParams.get('prompt')
+    if (promptParam) {
+      setPrompt(promptParam)
+    }
+  }, [searchParams])
 
   const handleStartGame = async () => {
     if (!prompt.trim()) return
@@ -29,17 +40,25 @@ export default function Home() {
     setResults([])
 
     try {
-      const response = await apiFetch('/api/challenge', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt }),
-      })
+      let data: ChallengeResult[]
 
-      if (!response.ok) {
-        throw new Error('Failed to challenge prompt')
+      if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true') {
+        // Simulate API delay in dev mode
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        data = generateMockChallenge(prompt)
+      } else {
+        const response = await apiFetch('/api/challenge', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt }),
+        })
+
+        if (!response.ok) {
+          throw new Error('Failed to challenge prompt')
+        }
+
+        data = await response.json()
       }
-
-      const data = await response.json()
 
       setNinjaState('attack')
       setResults(data)
@@ -124,12 +143,18 @@ export default function Home() {
         </Card>
 
         {results.length > 0 && (
+          <StatsSection results={results} prompt={prompt} />
+        )}
+
+        {results.length > 0 && (
           <div className="space-y-8">
             <h3 className="pixel-font text-xl mb-4 text-center text-primary">
               Ninja&apos;s Challenge Results
             </h3>
             <ChallengeTable results={results} />
-            <CTASection />
+            {gameStatus && gameStatus.losses > 0 && (
+              <WhiteNinjaSprite prompt={prompt} results={results} />
+            )}
           </div>
         )}
       </div>

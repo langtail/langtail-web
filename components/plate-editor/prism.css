@@ -1,0 +1,132 @@
+/*
+  Edited Night Owl theme from Prism.js
+  - removed styles for pre and code tags
+
+  Original URL: https://github.com/PrismJS/prism-themes/blob/master/themes/prism-night-owl.css
+ */
+
+/* Light mode variables */
+:root {
+  --prism-token-comment: rgb(106, 153, 85);
+  --prism-token-punctuation: rgb(0, 0, 0);
+  --prism-namespace-color: rgb(0, 0, 128);
+  --prism-token-deleted: rgba(255, 0, 0, 0.56);
+  --prism-token-symbol: rgb(0, 0, 255);
+  --prism-token-tag: rgb(136, 18, 128);
+  --prism-token-boolean: rgb(28, 0, 207);
+  --prism-token-number: rgb(0, 128, 0);
+  --prism-token-function: rgb(0, 0, 205);
+  --prism-token-selector: rgb(85, 26, 139);
+  --prism-token-attr-name: rgb(255, 0, 0);
+  --prism-token-string: rgb(163, 21, 21);
+  --prism-token-class-name: rgb(43, 145, 175);
+  --prism-token-regex: rgb(255, 140, 0);
+  --prism-token-variable: rgb(128, 0, 128);
+}
+
+/* Dark mode variables */
+.dark {
+  --prism-token-comment: rgb(99, 119, 119);
+  --prism-token-punctuation: rgb(199, 146, 234);
+  --prism-namespace-color: rgb(178, 204, 214);
+  --prism-token-deleted: rgba(239, 83, 80, 0.56);
+  --prism-token-symbol: rgb(128, 203, 196);
+  --prism-token-tag: rgb(127, 219, 202);
+  --prism-token-boolean: rgb(255, 88, 116);
+  --prism-token-number: rgb(247, 140, 108);
+  --prism-token-function: rgb(130, 170, 255);
+  --prism-token-selector: rgb(199, 146, 234);
+  --prism-token-attr-name: rgb(173, 219, 103);
+  --prism-token-string: rgb(173, 219, 103);
+  --prism-token-class-name: rgb(255, 203, 139);
+  --prism-token-regex: rgb(214, 222, 235);
+  --prism-token-variable: rgb(214, 222, 235);
+}
+
+/* Syntax highlighting styles using variables */
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: var(--prism-token-comment);
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--prism-token-punctuation);
+}
+
+.namespace {
+  color: var(--prism-namespace-color);
+}
+
+.token.deleted {
+  color: var(--prism-token-deleted);
+  font-style: italic;
+}
+
+.token.symbol,
+.token.property {
+  color: var(--prism-token-symbol);
+}
+
+.token.tag,
+.token.operator,
+.token.keyword {
+  color: var(--prism-token-tag);
+}
+
+.token.boolean {
+  color: var(--prism-token-boolean);
+}
+
+.token.number {
+  color: var(--prism-token-number);
+}
+
+.token.constant,
+.token.function,
+.token.builtin,
+.token.char {
+  color: var(--prism-token-function);
+}
+
+.token.selector,
+.token.doctype {
+  color: var(--prism-token-selector);
+  font-style: italic;
+}
+
+.token.attr-name,
+.token.inserted {
+  color: var(--prism-token-attr-name);
+  font-style: italic;
+}
+
+.token.string,
+.token.url,
+.token.entity,
+.language-css .token.string,
+.style .token.string {
+  color: var(--prism-token-string);
+}
+
+.token.class-name,
+.token.atrule,
+.token.attr-value {
+  color: var(--prism-token-class-name);
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: var(--prism-token-variable);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}

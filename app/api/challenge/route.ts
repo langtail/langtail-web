@@ -1,4 +1,3 @@
-import { openai } from '@ai-sdk/openai'
 import { generateObject, generateText } from 'ai'
 import { NextResponse } from 'next/server'
 import { ChallengeResultSchema } from '@/lib/schemas'
@@ -64,7 +63,6 @@ async function processSingleChallenge(
       },
     }),
     schema: z.object({
-      strict: z.boolean().default(true),
       analysis: z.object({
         explanation: z
           .string()
