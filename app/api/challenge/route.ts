@@ -6,8 +6,6 @@ import { langtail } from 'langtail/vercel-ai'
 import { attacks } from '@/lib/attacks'
 import { createOpenAI } from '@ai-sdk/openai'
 
-export const runtime = 'edge'
-
 const openai = createOpenAI({
   compatibility: 'strict',
   baseURL: 'https://proxy.langtail.com/v1',
