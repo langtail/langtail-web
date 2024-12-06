@@ -107,13 +107,15 @@ export function PromptEditor({
         onSuggestionAccept={handleSuggestionAccepted}
         onSuggestionReject={handleSuggestionRejected}
       >
-        <div className="flex-1 flex flex-col gap-3">
-          <DiffPlateEditor
-            value={prompt}
-            className="flex-1 h-full mb-4 bg-background p-3 rounded-lg border"
-            onTextChange={setPrompt}
-            placeholder="Your prompt will appear here..."
-          />
+        <div className="flex-1 flex flex-col gap-3 h-full overflow-hidden">
+          <div className="h-full overflow-auto bg-background p-3 rounded-lg border">
+            <DiffPlateEditor
+              value={prompt}
+              className="flex-1 h-full mb-4"
+              onTextChange={setPrompt}
+              placeholder="Your prompt will appear here..."
+            />
+          </div>
           {suggestedText ? (
             <DiffControls
               onAccept={handleSuggestionAccepted}

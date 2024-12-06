@@ -53,14 +53,14 @@ export function PromptImproverContent() {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="w-full lg:w-1/2 flex flex-col h-[70vh] min-h-[400px]">
+          <div className="w-full lg:w-1/2 flex flex-col h-[50vh] min-h-[500px]">
             <WhiteNinjaChat
               prompt={prompt}
               results={results}
               onSuggestPrompt={setSuggestedPrompt}
             />
           </div>
-          <div className="w-full lg:w-1/2 flex flex-col">
+          <div className="w-full lg:w-1/2 flex flex-col h-[50vh] min-h-[500px]">
             {didLoad && (
               <PromptEditor
                 initialPrompt={prompt}

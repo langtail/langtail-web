@@ -339,7 +339,7 @@ I'm here to help you craft effective prompts.`,
         </div>
       </ScrollArea>
 
-      <div className="relative w-full bg-muted/50 rounded-xl overflow-hidden focus-within:ring-1 focus-within:ring-primary">
+      <div className="relative w-full bg-muted/50 rounded-xl overflow-hidden focus-within:ring-1 focus-within:ring-primary ring-primary/50 ring-1">
         <form onSubmit={handleSubmit} className="w-full">
           <Textarea
             value={input}
@@ -389,7 +389,7 @@ I'm here to help you craft effective prompts.`,
                   <Button
                     type="submit"
                     size="icon"
-                    variant="ghost"
+                    variant="default"
                     className="h-8 w-8 hover:bg-muted"
                     disabled={isLoading || isRecording || input.length === 0}
                   >
