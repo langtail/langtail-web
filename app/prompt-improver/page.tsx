@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: 'White Ninja: Intent-Based Prompt Engineering Tool | Langtail',
   description:
     'Let White Ninja guide you in transforming your ideas into perfect prompts. Our intent-based prompt engineering tool provides AI-powered assistance to create clear, effective, and precise prompts every time.',
+  alternates: {
+    canonical: `${process.env.CANONICAL_URL}/prompt-improver`,
+  },
   keywords: [
     'prompt engineering',
     'AI prompts',

@@ -9,6 +9,9 @@ import { AnalyticsProvider } from '@/components/analytics-provider'
 export const metadata: Metadata = {
   title: 'Langtail',
   description: 'Build faster and more predictable AI-powered apps',
+  alternates: {
+    canonical: process.env.CANONICAL_URL,
+  },
 }
 
 export default function RootLayout({

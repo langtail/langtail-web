@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'prompt testing',
   ],
   authors: [{ name: 'Langtail Team' }],
+  alternates: {
+    canonical: `${process.env.CANONICAL_URL}/prompt-ninja`,
+  },
   openGraph: {
     title: 'Prompt Ninja: The Ultimate AI Prompt Engineering Game | Langtail',
     description:

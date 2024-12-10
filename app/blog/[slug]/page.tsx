@@ -28,11 +28,17 @@ export async function generateMetadata({
         authors: [frontmatter.author.name],
         images: [`${assetPrefix}${frontmatter.coverImage}`],
       },
+      alternates: {
+        canonical: `${process.env.CANONICAL_URL}/blog/${params.slug}`,
+      },
     }
   } catch {
     return {
       title: 'Blog Post | Langtail',
       description: 'Langtail blog article',
+      alternates: {
+        canonical: `${process.env.CANONICAL_URL}/blog`,
+      },
     }
   }
 }

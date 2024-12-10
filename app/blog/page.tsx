@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: 'Blog | Langtail',
   description:
     'Latest articles about AI, prompt engineering, and LLM development',
+  alternates: {
+    canonical: `${process.env.CANONICAL_URL}/blog`,
+  },
 }
 
 export default async function BlogPage() {
