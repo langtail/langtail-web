@@ -1,5 +1,6 @@
 import type { MDXComponents } from 'mdx/types'
 import { CodeBlock } from '@/components/mdx-code-block'
+import { assetPrefix } from '@/lib/utils'
 
 // This file is required to use MDX in `app` directory.
 export function MDXComponents(components: MDXComponents = {}): MDXComponents {
@@ -42,7 +43,11 @@ export function MDXComponents(components: MDXComponents = {}): MDXComponents {
       </blockquote>
     ),
     img: ({ src, alt }) => (
-      <img src={src} alt={alt} className="mt-8 rounded-xl shadow-xl" />
+      <img
+        src={`${assetPrefix}${src}`}
+        alt={alt}
+        className="mt-8 rounded-xl shadow-xl"
+      />
     ),
     pre: ({ children }) => children,
     code: ({ children, className }) => {
