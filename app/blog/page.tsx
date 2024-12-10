@@ -6,7 +6,8 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Blog | Langtail',
-  description: 'Latest articles about AI, prompt engineering, and LLM development',
+  description:
+    'Latest articles about AI, prompt engineering, and LLM development',
 }
 
 export default async function BlogPage() {
