@@ -9,12 +9,13 @@ import {
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import * as Icons from 'lucide-react'
+import { LucideIcon } from 'lucide-react'
 
 interface ProductMenuItem {
   name: string
   description: string
   href: string
-  icon: keyof typeof Icons
+  icon: string
 }
 
 interface ProductMenuProps {
@@ -39,14 +40,16 @@ export function ProductMenu({ items }: ProductMenuProps) {
       >
         <div className="p-2">
           {items.map((item) => {
-            const Icon = Icons[item.icon]
+            const IconComponent = Icons[
+              item.icon as keyof typeof Icons
+            ] as LucideIcon
             return (
               <div
                 key={item.name}
                 className="group relative flex items-center gap-x-6 rounded-lg p-3 text-sm leading-6 hover:bg-gray-900"
               >
                 <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg border bg-gray-900 group-hover:border-gray-700 group-hover:bg-gray-800">
-                  <Icon
+                  <IconComponent
                     className="h-5 w-5 text-gray-300 group-hover:text-white"
                     aria-hidden="true"
                   />

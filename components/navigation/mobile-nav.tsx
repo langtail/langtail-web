@@ -11,11 +11,16 @@ import {
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { Logo } from '@/components/logo'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 
 interface NavigationItem {
   name: string
-  href: string
+  href?: string
   children?: Array<{
     name: string
     description: string
@@ -73,7 +78,7 @@ export function MobileNav({ items }: MobileNavProps) {
               ) : (
                 <Link
                   key={item.name}
-                  href={item.href}
+                  href={item.href || ''}
                   className="text-sm font-semibold text-gray-300 hover:text-white"
                 >
                   {item.name}
