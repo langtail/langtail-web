@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <div className="min-h-screen">
         <div className="mx-auto max-w-3xl">
           <div className="relative mb-8 overflow-hidden rounded-xl bg-gray-50 dark:bg-gray-900">
-            <Image
+            <img
               src={frontmatter.coverImage}
               alt={`Cover image for ${frontmatter.title}`}
               width={1310}
