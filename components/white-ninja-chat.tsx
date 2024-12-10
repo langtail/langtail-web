@@ -112,9 +112,18 @@ I'm here to help you craft effective prompts.`,
     if (prompt) {
       setInitialSent(true)
       setInput(
-        `Hello! I had some challenges with this prompt:
+        `Hello! Here is my prompt:
 
-"${prompt}"`
+<prompt>
+"${prompt}"
+</prompt>
+
+Here are the results from the prompt ninja challenge:
+
+${JSON.stringify(results, null, 2)}
+
+Can you help me improve it?
+`
       )
     }
   }, [prompt])
@@ -243,7 +252,7 @@ I'm here to help you craft effective prompts.`,
   console.log('messages', messages)
 
   return (
-    <Card className="p-6 h-full flex flex-col">
+    <Card className="p-6 h-full flex flex-col font-sans">
       <div className="flex items-center gap-3 mb-6">
         <AssetImage
           src={`/images/white-ninja/standing${frames[frame]}.png`}

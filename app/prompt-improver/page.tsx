@@ -3,9 +3,9 @@ import { assetPrefix } from '@/lib/utils'
 import { PromptImproverContent } from '@/components/prompt-improver-content'
 
 export const metadata: Metadata = {
-  title: 'Langtail - Improve Your Prompt!',
+  title: 'White Ninja: Intent-Based Prompt Engineering Tool | Langtail',
   description:
-    'Make your AI prompts more robust and effective with our Prompt Sensei. Get expert guidance to enhance your prompt engineering skills.',
+    'Let White Ninja guide you in transforming your ideas into perfect prompts. Our intent-based prompt engineering tool provides AI-powered assistance to create clear, effective, and precise prompts every time.',
   keywords: [
     'prompt engineering',
     'AI prompts',
@@ -16,9 +16,9 @@ export const metadata: Metadata = {
     'prompt sensei',
   ],
   openGraph: {
-    title: 'Langtail - Improve Your Prompt!',
+    title: 'White Ninja: Intent-Based Prompt Engineering Tool | Langtail',
     description:
-      'Make your AI prompts more robust and effective with our Prompt Sensei. Get expert guidance to enhance your prompt engineering skills.',
+      'Let White Ninja guide you in transforming your ideas into perfect prompts. Our intent-based prompt engineering tool provides AI-powered assistance to create clear, effective, and precise prompts every time.',
     url: 'https://langtail.com/prompt-improver',
     siteName: 'Langtail',
     locale: 'en_US',
@@ -34,9 +34,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Langtail - Improve Your Prompt!',
+    title: 'White Ninja: Intent-Based Prompt Engineering Tool | Langtail',
     description:
-      'Make your AI prompts more robust and effective with our Prompt Sensei. Get expert guidance to enhance your prompt engineering skills.',
+      'Let White Ninja guide you in transforming your ideas into perfect prompts. Our intent-based prompt engineering tool provides AI-powered assistance to create clear, effective, and precise prompts every time.',
     creator: '@langtail',
     images: [`${assetPrefix}/og-prompt-improver.jpg`],
   },

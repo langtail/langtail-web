@@ -3,7 +3,7 @@ import { assetPrefix } from '@/lib/utils'
 import { PromptNinjaGame } from './prompt-ninja-game'
 
 export const metadata: Metadata = {
-  title: 'Break My Prompt! - AI Prompt Engineering Game | Langtail',
+  title: 'Prompt Ninja: The Ultimate AI Prompt Engineering Game | Langtail',
   description:
     'Test your prompt engineering skills against our ninja! Challenge yourself with our AI prompt engineering game and improve your skills.',
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Langtail Team' }],
   openGraph: {
-    title: 'Break My Prompt! - AI Prompt Engineering Game | Langtail',
+    title: 'Prompt Ninja: The Ultimate AI Prompt Engineering Game | Langtail',
     description:
       'Test your prompt engineering skills against our ninja! Challenge yourself with our AI prompt engineering game and improve your skills.',
     url: 'https://langtail.com/prompt-ninja',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Break My Prompt! - AI Prompt Engineering Game | Langtail',
+    title: 'Prompt Ninja: The Ultimate AI Prompt Engineering Game | Langtail',
     description:
       'Test your prompt engineering skills against our ninja! Challenge yourself with our AI prompt engineering game and improve your skills.',
     creator: '@langtail',

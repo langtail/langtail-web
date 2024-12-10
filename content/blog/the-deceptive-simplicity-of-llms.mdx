@@ -1,0 +1,67 @@
+---
+title: The Deceptive Simplicity of LLMs
+description: Language models are deceptively simple at first glance. One might think it's just about feeding prompts and receiving text output. But when applied to real-world applications, the picture gets more complex. This post dives into a fictional narrative, revealing the challenges and complexities of creating an LLM chatbot.
+author:
+  name: Petr Brzek
+  role: Co-founder / CEO
+  avatar: https://pbs.twimg.com/profile_images/1278678093247311873/_yWG9Kbe_400x400.jpg
+publishedAt: 2023-07-24T12:00:00.000Z
+coverImage: /images/blog/impossible-triangle.png
+---
+
+Language models are deceptively simple at first glance. One might think it's just about feeding prompts and receiving text output. But when applied to real-world applications, the picture gets more complex. This post dives into a fictional narrative, revealing the challenges and complexities of creating an LLM chatbot.
+
+## The Initial Optimism
+
+Imagine you are creating an educational chatbot. On the surface, it seems like a straightforward task of building an API wrapper on top of OpenAI's API.
+
+"One to two weeks should cover it," estimates a developer on the project. Bolstered by this optimism, you develop a Socratic-style prompt within the OpenAI playground, which appears to function well.
+
+Fast forward a week. You've spent the time developing a user interface and backend API, and the team now has a functional prototype. The progress seems impressive. A custom educational chatbot completed in just one week, ready to ship. But hold on – how confident are you about its performance and safety?
+
+> It's easy to make something cool with LLMs, but very hard to make something production-ready with them.
+
+— **Chip Huyen**, a writer and computer scientist, in her [blog post](https://huyenchip.com/2023/04/11/llm-engineering.html).
+
+You're faced with various questions: How do you handle chat history given the finite prompt size? Have you cleverly summarised previous messages, ensuring no critical details are lost? Can your chatbot decline tasks outside its abilities, or will it fabricate answers? What about security concerns regarding its modification?
+
+## And Then the Problems Came
+
+Then you learn about GPT-4. It handles complex topics better, but it's more expensive and slower than GPT-3.5. A developer suggests classifying incoming messages first, then using either GPT-3.5 or GPT-4 based on complexity. You create a prompt to classify inputs and test it in the OpenAI playground. It seems to work, but how certain can you be, based on only a handful of test examples?
+
+Your product launches, and to your delight, users are engaging. But then you realize, you lack a dashboard for tracking conversations, usage stats, and costs. OpenAI's stats are limited and your database isn't the most user-friendly for reviewing conversations.
+
+> "There's a lot of hype around AI, and in particular, Large Language Models (LLMs). To be blunt, a lot of that hype is just some demo bullshit that would fall over the instant anyone tried to use it for a real task that their job depends on. The reality is far less glamorous: it's hard to build a real product backed by an LLM."
+>
+> — **Phillip Carter**, CPO of honeycomb.io, in his [blog post](https://www.honeycomb.io/blog/hard-stuff-nobody-talks-about-llm).
+
+Soon, you start receiving feedback from users. The chatbot sometimes generates nonsensical responses, forgets information, and performs slowly. How can you address these issues?
+
+Additionally, unexpected usage spikes strain your budget. An investigation reveals a user sent hundreds of long messages within an hour. "We need rate limiting," you realize.
+
+In response to faulty bot responses, you adjust the prompt. It fixes the issue, but does it cover similar but different inputs?
+
+## Involving Non-Developers
+
+Enter Erika, a writer and psychology student introduced by your CEO. "She's a perfect fit," he says. "With her unique skill set, she can definitely help improve our prompts. And it's just English sentences, right?"
+
+Upon hearing this, one of your developers casually suggests, "Well, she could just clone our Python repository, make her changes, and submit a pull request."
+
+The room falls silent for a moment as the suggestion sinks in. Erika, who's not a programmer, is supposed to navigate a Python repository just to fine-tune English prompts? The developer's suggestion, while well-intentioned, highlights a glaring issue: why should editing simple English prompts require programming skills or code repository manipulation?
+
+At this point, a new idea sparks in the developer's mind. "Hmm, the prompts could probably live outside of the codebase. They're sort of similar to translation strings," they think aloud. This could open up a whole new way of dealing with prompts, making them more accessible to non-developers like Erika.
+
+## Introducing Langtail
+
+This fictional story ends here, but it's clear we're only at the beginning. To summarize the challenges, the journey of creating a chatbot involves a myriad of complex and interlinked issues. There's a need for tools to make life easier for developers and non-developers alike. Currently, we're working on an MVP version of a solution that we believe can aid developers in navigating these challenges. We're building Langtail with the intention to provide:
+
+- **Observability of LLMs**: Get real-time insights into the model's predictions, helping you understand its decisions better.
+- **Automatic alerts**: Imagine a tool that could notify you when sudden usage spikes occur, or if the model's performance deviates from defined thresholds, helping you stay on top of any potential issues.
+- **No-code rate limiting**: A simple user interface where you can set limits on different API keys or environments, protecting you from unexpected usage spikes without needing to write a single line of code.
+- **Per App API keys**: The safety of having multiple API keys, each with customizable access and request limits to ensure security across different components of your application.
+- **No-code prompt definition**: A visual editor where non-developers can experiment with and refine model prompts, empowering your entire team to contribute to model improvements.
+- **Prompts as API endpoints**: Instead of hardcoding prompts, imagine having a dedicated service where you can manage and version them. Updating a prompt wouldn't require a code deployment anymore.
+- **Detailed logs**: A comprehensive logging system providing insights into every prompt API endpoint, logging input/output to the LLM, cost, and performance stats.
+- **Tests and CI for prompts**: An integrated testing environment where you can launch a collection of inputs against your prompt, allowing you to be more confident that your model behaves as expected.
+
+We believe Langtail could offer the developers from our earlier story the toolset they need to create chatbots more efficiently and confidently.

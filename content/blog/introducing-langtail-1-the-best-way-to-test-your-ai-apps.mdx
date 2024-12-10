@@ -1,0 +1,96 @@
+---
+title: Introducing Langtail 1.0 - The Best Way to Test Your AI Apps
+description: Testing is what will make or break an AI app. Introducing Langtail 1.0 – a major step forward for building and testing AI apps.
+author:
+  name: Petr Brzek
+  role: Co-founder / CEO
+  avatar: https://pbs.twimg.com/profile_images/1278678093247311873/_yWG9Kbe_400x400.jpg
+publishedAt: 2024-10-29T12:00:00.000Z
+coverImage: /images/blog/langtail-1-cover.jpg
+---
+
+We launched Langtail into public beta six months ago under this simple premise: **Testing is what will make or break an AI app.**
+
+The AI space has evolved dramatically over the past 6 months - new frontier models, massive context windows, inexpensive models for certain use cases, and much more.
+
+**Want to know what hasn't changed?** You still need to test your LLM prompts to make sure they behave the way you intend.
+
+**Want to know why that hasn't changed?** At their core, LLMs are word predictors. They're inherently untrustworthy.
+
+We are more convinced than ever that to build trustworthy AI apps, you need to test.
+
+## How _not_ to test an AI app
+
+For many companies that we've talked to, their story with LLM testing goes something like this:
+
+1. You build a cool demo app and impress your CEO or investors. You feel like LLMs can do anything.
+2. You get green-lit to turn the demo into a product. You have a text file with 10 example inputs and the LLM works well for all of them.
+3. You @channel your team and ask them to find bugs and break the app. They find a _ton_ of issues.
+4. You put all of the issues in a spreadsheet and get to work fixing the issues.
+5. Repeat steps 3 and 4 a couple of times.
+6. There are so many rows in the spreadsheet that you hire a QA intern that spends their entire day testing different versions of the app and deciding whether the LLM's output is "good", "bad", or "meh".
+7. Despair.
+
+That's usually when the head of engineering starts frantically searching, finds Langtail, and calls us.
+
+## So, how _do_ you test an AI app?
+
+We've been working really hard to answer that question for the past 18 months. We think we have a compelling answer.
+
+Today, we're excited to introduce **Langtail 1.0** – a major step forward for building and testing AI apps.
+
+Honestly, the best way to explain it is to show it:
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/g2Xj7_jYRa4"
+  title="Langtail 1.0 Demo"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+/>
+
+Notice how fast the feedback loop is between editing your prompt and seeing if the test cases pass. Langtail keeps you in flow and focused on optimizing your prompt for your use case.
+
+## What we're releasing today
+
+### Brand new testing interface
+
+At the core of Langtail 1.0 is our new spreadsheet-like interface for testing LLM applications. Our goal was to make it feel natural to anyone used to working in Excel or Google Sheets to build up a set of test cases.
+
+![Testing Interface](/images/blog/testing-table.jpg)
+
+### Test Configurations
+
+Today we're also launching test configurations. Let's say that a new frontier model gets released and you're wondering if it'll benefit your app. It's as simple as a few clicks to create a new test config with that model and see the side-by-side comparison.
+
+![Test Configurations](/images/blog/test-configs.jpg)
+
+### Tools with Hosted Code
+
+Your prompts can now call tools and have the code run directly within Langtail. It makes prototyping and testing much easier since you no longer have to mock the response. Plus, with our secure sandboxed environment powered by QuickJS, you can safely and quickly execute JavaScript code.
+
+![Hosted Code](/images/blog/hosted-code.jpg)
+
+### Assistants: Memory Management for Prompts
+
+Langtail 1.0 introduces Assistants—stateful entities that automatically manage memory and conversation history, so you don't have to. This means less code to write and maintain, and more focus on building. Assistants can be used across models, in tests, deployed as APIs, or integrated with tools.
+
+![Assistants](/images/blog/assistants.jpg)
+
+### And just a few more features
+
+- **AI Firewall**: Protect your AI apps from prompt injection attacks and other security vulnerabilities with our built-in AI Firewall.
+
+- **Secure code execution**: We've partnered with E2B to allow for the execution of LLM-generated code in a secure sandboxed container.
+
+- **[Langtail Templates](https://langtail.com/templates)**: To help you get started, we added a gallery of templates that show many different ways that Langtail could help your team.
+
+- **Google Gemini support**: We've added support for Gemini models, including the ability to attach videos to prompts.
+
+- **Self-hosting**: We've done a lot of work behind the scenes to allow for enterprises to self-host Langtail entirely on their infrastructure. Let us know if you're interested in this!
+
+## See you in the app
+
+We're incredibly proud of Langtail 1.0, and we'd love for you to experience it for yourself. Whether you're an AI engineer, a product team pushing the boundaries of LLM apps, or an enterprise seeking more control and security, Langtail 1.0 has the tools you need.
+
+We can't wait to see what you'll build.

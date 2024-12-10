@@ -1,12 +1,12 @@
-"use client"
+'use client'
 
-import { Textarea } from '@/components/ui/textarea';
-import { Target } from 'lucide-react';
+import { Textarea } from '@/components/ui/textarea'
+import { Target } from 'lucide-react'
 
 interface PromptInputProps {
-  value: string;
-  onChange: (value: string) => void;
-  disabled?: boolean;
+  value: string
+  onChange: (value: string) => void
+  disabled?: boolean
 }
 
 export function PromptInput({ value, onChange, disabled }: PromptInputProps) {
@@ -20,9 +20,9 @@ export function PromptInput({ value, onChange, disabled }: PromptInputProps) {
         placeholder="Enter your prompt instructions here..."
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="min-h-[120px] mb-4"
+        className="min-h-[120px] mb-4 font-sans"
         disabled={disabled}
       />
     </div>
-  );
+  )
 }

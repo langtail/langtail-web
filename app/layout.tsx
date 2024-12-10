@@ -1,10 +1,15 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '@/components/theme-provider'
-import { pressStart2P } from './fonts'
-import { Navbar } from '@/components/navbar'
-import { Footer } from '@/components/footer'
+import { pressStart2P, inter } from './fonts'
 import { Toaster } from '@/components/ui/toaster'
+import { LayoutContent } from '@/components/layout-content'
+import { AnalyticsProvider } from '@/components/analytics-provider'
+
+export const metadata: Metadata = {
+  title: 'Langtail',
+  description: 'Build faster and more predictable AI-powered apps',
+}
 
 export default function RootLayout({
   children,
@@ -12,7 +17,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={pressStart2P.variable}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${pressStart2P.variable} ${inter.variable}`}
+    >
       <body>
         <ThemeProvider
           attribute="class"
@@ -20,12 +29,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
-            <main className="flex-1 flex flex-col">{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
+          <AnalyticsProvider>
+            <LayoutContent>{children}</LayoutContent>
+            <Toaster />
+          </AnalyticsProvider>
         </ThemeProvider>
       </body>
     </html>

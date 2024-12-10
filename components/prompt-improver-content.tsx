@@ -28,7 +28,7 @@ export function PromptImproverContent() {
   }, [])
 
   return (
-    <div className="p-4 md:p-8 mt-5">
+    <div className="p-4 md:p-8 mt-5 ninja">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <div className="flex flex-col items-center justify-center gap-8 mb-8">
@@ -60,7 +60,7 @@ export function PromptImproverContent() {
               onSuggestPrompt={setSuggestedPrompt}
             />
           </div>
-          <div className="w-full lg:w-1/2 flex flex-col h-[50vh] min-h-[500px]">
+          <div className="w-full lg:w-1/2 flex flex-col h-[50vh] min-h-[500px] font-sans">
             {didLoad && (
               <PromptEditor
                 initialPrompt={prompt}

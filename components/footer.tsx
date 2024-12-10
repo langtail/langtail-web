@@ -84,7 +84,7 @@ export function Footer() {
   return (
     <footer
       aria-labelledby="footer-heading"
-      className="relative mt-auto flex border-t border-white/5 bg-black/10"
+      className="relative mt-auto flex border-t border-white/5 bg-black/10 font-sans"
     >
       <h2 id="footer-heading" className="sr-only">
         Footer

@@ -1,9 +1,32 @@
 /** @type {import('next').NextConfig} */
+import createMDX from '@next/mdx'
+
+const withMDX = createMDX({
+  // Add markdown plugins here, as desired
+  options: {
+    remarkPlugins: [],
+    rehypePlugins: [],
+  },
+})
+
 const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   eslint: {
     ignoreDuringBuilds: true,
   },
   output: process.env.NEXT_PUBLIC_VERCEL === '1' ? undefined : 'standalone',
+  async rewrites() {
+    return [
+      {
+        source: '/mp/decide',
+        destination: 'https://decide.mixpanel.com/decide',
+      },
+      {
+        source: '/mp/:slug',
+        destination: 'https://api-eu.mixpanel.com/:slug',
+      },
+    ]
+  },
   async headers() {
     // Get allowed origins from environment variable
     const allowedOrigins =
@@ -73,4 +96,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+export default withMDX(nextConfig)

@@ -197,7 +197,7 @@ export function ChallengeTable({ results }: ChallengeTableProps) {
                 <TableRow key={`expanded-${result.id}`}>
                   <TableCell
                     colSpan={5}
-                    className="bg-muted/30 animate-accordion-down"
+                    className="bg-muted/30 animate-accordion-down font-sans"
                   >
                     <div className="p-4">
                       <div className="flex items-start gap-3">

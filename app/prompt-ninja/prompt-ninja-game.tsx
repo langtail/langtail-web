@@ -91,7 +91,7 @@ export function PromptNinjaGame() {
   const gameStatus = getGameStatus()
 
   return (
-    <div className="p-4 md:p-8 mt-5">
+    <div className="p-4 md:p-8 mt-5 ninja">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <div className="flex flex-col items-center justify-center gap-8 mb-8">

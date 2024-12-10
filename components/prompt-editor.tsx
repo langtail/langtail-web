@@ -55,9 +55,6 @@ export function PromptEditor({
   const { toast } = useToast()
   const editor = useEditor()
 
-  console.log('initialPrompt', initialPrompt)
-  console.log('prompt', prompt)
-
   useEffect(() => {
     if (externalSuggestedText) {
       setSuggestedText(externalSuggestedText)
@@ -91,7 +88,7 @@ export function PromptEditor({
   return (
     <Card className="p-6 flex flex-col h-full">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold">Your Prompt</h2>
+        <h2 className="text-base font-semibold">Your Prompt</h2>
         <Button
           variant="ghost"
           size="icon"
