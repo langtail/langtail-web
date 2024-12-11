@@ -40,7 +40,9 @@ export function CodeBlock({
         </button>
 
         {language === 'text' ? (
-          <pre className="text-sm text-gray-400">{children}</pre>
+          <pre className="text-sm text-gray-400 whitespace-pre-wrap min-h-[80px]">
+            {children}
+          </pre>
         ) : (
           <SyntaxHighlighter
             language={language}

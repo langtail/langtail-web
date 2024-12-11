@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types'
 import { CodeBlock } from '@/components/mdx-code-block'
 import { assetPrefix } from '@/lib/utils'
+import { ButtonLink } from '@/components/ui/button-link'
 
 // This file is required to use MDX in `app` directory.
 export function MDXComponents(components: MDXComponents = {}): MDXComponents {
@@ -46,7 +47,7 @@ export function MDXComponents(components: MDXComponents = {}): MDXComponents {
       <img
         src={`${assetPrefix}${src}`}
         alt={alt}
-        className="mt-8 rounded-xl shadow-xl"
+        className="mt-8 rounded-xl shadow-xl bg-gray-800 p-2"
       />
     ),
     pre: ({ children }) => children,
@@ -59,6 +60,9 @@ export function MDXComponents(components: MDXComponents = {}): MDXComponents {
         </CodeBlock>
       )
     },
+    Button: ({ children, href }) => (
+      <ButtonLink href={href}>{children}</ButtonLink>
+    ),
     ...components,
   }
 }
