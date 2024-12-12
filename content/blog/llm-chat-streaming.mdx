@@ -1,0 +1,117 @@
+---
+title: 'Understanding LLM Chat Streaming: Building Real-Time AI Conversations'
+description: 'Learn how to implement streaming responses with Large Language Models for a more engaging and responsive chat experience.'
+author:
+  name: Petr Brzek
+  role: Co-founder / CEO
+  avatar: https://pbs.twimg.com/profile_images/1278678093247311873/_yWG9Kbe_400x400.jpg
+publishedAt: 2024-12-12T12:00:00.000Z
+coverImage: /images/blog/ai-convo.jpg
+---
+
+Have you ever wondered why ChatGPT sometimes responds instantly, word by word, while other AI chatbots make you wait for the entire response? The secret lies in something called "chat streaming." Let's break down what this means and why it matters.
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/hyR4FAGfEIg?si=44hCC6J8WXMT2RXN"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
+Stream vs non-stream LLM chat comparison in Langtail.
+
+## The Magic of Instant Responses
+
+Imagine you're texting with a friend. They don't typically write out their entire message, wait a minute, and then hit send. Instead, in real conversations, we see those familiar typing indicators, and responses come in naturally, piece by piece. This is exactly what LLM chat streaming tries to achieve with AI conversations.
+
+Chat streaming is like turning on a faucet of words instead of waiting for a bucket to fill up. When you ask an AI a question, instead of waiting for it to think through and write out the entire response, it starts sending words as soon as it generates them.
+
+![LLM chat streaming](/images/blog/stream-vs-non-stream.png)
+
+## How Does It Actually Work?
+
+Let's peek behind the curtain. When you're chatting with an AI using streaming:
+
+1. You type your question and hit send
+2. The AI starts thinking about the answer
+3. As soon as it has the first word or phrase ready, it sends it to your screen
+4. It continues sending more words as it generates them
+5. Your screen updates in real-time, making it feel like the AI is "typing" to you
+
+![LLM token flow](/images/blog/token-flow.png)
+
+Here's a real example. When you ask ChatGPT "Tell me about dogs," instead of waiting 5 seconds and showing everything at once, it might stream like this:
+
+```text
+Dogs [200ms delay]
+are one of [100ms delay]
+humanity's most beloved [150ms delay]
+companions. These loyal [100ms delay]
+animals have been... [continues]
+```
+
+This happens so smoothly that it feels natural - just like watching someone type in a chat window.
+
+## Why Does This Matter?
+
+The difference between streaming and non-streaming AI chat is like the difference between a live conversation and leaving voicemails. Here's why streaming is such a game-changer:
+
+- **It Feels More Human**: When responses appear gradually, it feels more like talking to a person than a computer
+- **You Can Start Reading Earlier**: No more staring at loading spinners - you can begin reading the response while the rest is still being generated
+- **You Can Interrupt If Needed**: If you see the response going in the wrong direction, you can potentially stop it rather than waiting for a complete wrong answer
+
+## The Technical Bits (In Plain English)
+
+While we don't need to get too technical, understanding a few key concepts helps:
+
+**Tokens**: AI models think in "tokens" - small pieces of words or even parts of words. When you see streaming in action, you're watching these tokens arrive one by one or in small groups.
+
+Let's look at a simple example of how text gets broken down into tokens:
+
+```text
+"Hello from Prague" → ["Hello", "from", "Prague"]
+Token IDs: [13225, 591, 90463]
+```
+
+Each word gets converted into a numerical token ID that the AI model can understand. You can experiment with how different texts get tokenized using tools like [Tiktokenizer](https://tiktokenizer.vercel.app/) - a simple web tool that lets you see exactly how your text gets split into tokens. For more advanced options, you can also check out [OpenAI's Tokenizer](https://platform.openai.com/tokenizer) or [Hugging Face's Tokenizer](https://huggingface.co/tokenizers).
+
+Here's what a single chunk of streamed response actually looks like behind the scenes:
+
+```json
+{
+  "choices": [
+    {
+      "delta": {
+        "content": "Hello"
+      }
+    }
+  ]
+}
+```
+
+## When Streaming Goes Wrong
+
+Like any technology, streaming isn't perfect. Sometimes you might notice:
+
+- Words appearing in weird chunks
+- Brief pauses or stutters
+- Occasional network hiccups causing delays
+
+These issues happen because streaming requires a stable connection and proper handling of all those little pieces of text. It's like watching a live video stream - sometimes it might buffer or stutter, but overall, the experience is worth it.
+
+## Learn More
+
+Want to dive deeper into the technical aspects of LLM streaming? Here are some excellent resources:
+
+- [OpenAI's Chat Completion API Documentation](https://platform.openai.com/docs/api-reference/chat) - Learn how streaming works in the most popular LLM API
+- [Mozilla Developer Network (MDN) - Server-Sent Events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) - Technical documentation about the underlying technology that makes streaming possible
+- [Anthropic's Claude Documentation](https://docs.anthropic.com/claude/reference/streaming) - Another perspective on LLM streaming implementation
+
+## Conclusion
+
+Chat streaming might seem like a small detail, but it's these kinds of improvements that make AI feel more accessible and natural to use. Next time you're chatting with an AI and see those words appearing in real-time, you'll know exactly what's happening behind the scenes - a carefully orchestrated stream of tokens, making your conversation feel as natural as possible.
+
+Remember, whether you're using ChatGPT, Claude, or any other AI chat service, streaming is what makes the magic of instant, human-like responses possible. It's not just about getting the answer faster; it's about making the entire experience feel more like a real conversation.

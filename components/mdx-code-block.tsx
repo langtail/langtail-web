@@ -53,6 +53,11 @@ export function CodeBlock({
               backgroundColor: 'transparent',
               border: '1px solid rgba(31, 41, 55, 0.5)',
             }}
+            codeTagProps={{
+              style: {
+                backgroundColor: 'transparent',
+              },
+            }}
           >
             {children}
           </SyntaxHighlighter>
