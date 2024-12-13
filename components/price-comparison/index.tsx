@@ -4,7 +4,12 @@ import { useState, useMemo } from 'react'
 import { Card } from '@/components/ui/card'
 import { SearchBox } from './search-box'
 import { ModelTable } from './model-table'
-import { Filter, ModelPricing } from '@/lib/types/pricing'
+import {
+  Filter,
+  ModelPricing,
+  SortState,
+  FilterOperator,
+} from '@/lib/types/pricing'
 import { FilterPopover } from './filter-popover'
 import { FilterBadge } from './filter-badge'
 import { applyFilter } from '@/lib/utils/pricing'
@@ -27,9 +32,12 @@ export function PriceComparison({ initialModels }: PriceComparisonProps) {
     setFilters((prev) => [...prev, { ...filter, id: nanoid() }])
   }
 
-  const handleApplyPreset = (newFilters: Omit<Filter, 'id'>[], sort: SortState) => {
+  const handleApplyPreset = (
+    newFilters: Omit<Filter, 'id'>[],
+    sort: SortState | null
+  ) => {
     // Clear existing filters and apply new ones
-    setFilters(newFilters.map(filter => ({ ...filter, id: nanoid() })))
+    setFilters(newFilters.map((filter) => ({ ...filter, id: nanoid() })))
     setSortState(sort || { column: null, direction: null })
   }
 
@@ -52,10 +60,7 @@ export function PriceComparison({ initialModels }: PriceComparisonProps) {
     [initialModels, searchTerm, filters]
   )
 
-  const activeFilters = useMemo(
-    () => filters.length > 0,
-    [filters]
-  )
+  const activeFilters = useMemo(() => filters.length > 0, [filters])
 
   return (
     <div className="p-4 md:p-8 mt-5">
@@ -64,7 +69,8 @@ export function PriceComparison({ initialModels }: PriceComparisonProps) {
           <h1 className="text-4xl font-bold mb-4">LLM Price Comparison</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Compare pricing across different LLM providers. Find the most
-            cost-effective model for your use case. Prices are shown per 1M tokens.
+            cost-effective model for your use case. Prices are shown per 1M
+            tokens.
           </p>
         </div>
 
@@ -72,10 +78,10 @@ export function PriceComparison({ initialModels }: PriceComparisonProps) {
 
         <Card className="mb-8 bg-gray-800/50 border-gray-700/50">
           <div className="p-6">
-            <SearchBox 
-              value={searchTerm} 
+            <SearchBox
+              value={searchTerm}
               onChange={setSearchTerm}
-              placeholder="Search by model name or provider..." 
+              placeholder="Search by model name or provider..."
             />
           </div>
         </Card>
@@ -95,19 +101,19 @@ export function PriceComparison({ initialModels }: PriceComparisonProps) {
 
         <Card className="bg-gray-800/50 border-gray-700/50">
           <div className="rounded-md border-gray-700/50 border">
-            <ModelTable 
-              models={filteredModels} 
+            <ModelTable
+              models={filteredModels}
               sortState={sortState}
               onSort={(column) => {
-                setSortState((prev) => ({
+                setSortState((prev: SortState) => ({
                   column,
                   direction:
                     prev.column === column
                       ? prev.direction === 'asc'
                         ? 'desc'
                         : prev.direction === 'desc'
-                        ? null
-                        : 'asc'
+                          ? null
+                          : 'asc'
                       : 'asc',
                 }))
               }}

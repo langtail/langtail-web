@@ -1,30 +1,40 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import { 
-  Sparkles, 
-  Zap, 
-  Brain, 
-  DollarSign,
-  Eye
-} from 'lucide-react'
-import type { Filter, SortState } from '@/lib/types/pricing'
+import { Sparkles, Zap, Brain, DollarSign, Eye } from 'lucide-react'
+import type {
+  Filter,
+  SortState,
+  FilterOperator,
+  ModelPricing,
+} from '@/lib/types/pricing'
 import { nanoid } from 'nanoid'
 
 interface QuickActionsProps {
-  onApplyPreset: (filters: Omit<Filter, 'id'>[], sort: SortState) => void
+  onApplyPreset: (filters: Omit<Filter, 'id'>[], sort: SortState | null) => void
+}
+
+type PresetType = {
+  label: string
+  icon: any
+  filters: Array<{
+    column: keyof ModelPricing
+    operator: FilterOperator
+    value: boolean | number
+  }>
+  sort: SortState | null
 }
 
 export function QuickActions({ onApplyPreset }: QuickActionsProps) {
-  const presets = [
+  const presets: PresetType[] = [
     {
       label: 'Cheapest Models',
       icon: DollarSign,
       filters: [],
       sort: {
         column: 'output_cost_per_token',
-        direction: 'asc'
-      } as SortState
+        direction: 'asc',
+      },
     },
     {
       label: 'Largest Context',
@@ -33,13 +43,13 @@ export function QuickActions({ onApplyPreset }: QuickActionsProps) {
         {
           column: 'max_input_tokens',
           operator: 'greater_than',
-          value: 100000
-        }
+          value: 100000,
+        },
       ],
       sort: {
         column: 'max_input_tokens',
-        direction: 'desc'
-      } as SortState
+        direction: 'desc',
+      },
     },
     {
       label: 'Vision Models',
@@ -48,10 +58,10 @@ export function QuickActions({ onApplyPreset }: QuickActionsProps) {
         {
           column: 'supports_vision',
           operator: 'equals',
-          value: true
-        }
+          value: true,
+        },
       ],
-      sort: null
+      sort: null,
     },
     {
       label: 'Function Calling',
@@ -60,10 +70,10 @@ export function QuickActions({ onApplyPreset }: QuickActionsProps) {
         {
           column: 'supports_function_calling',
           operator: 'equals',
-          value: true
-        }
+          value: true,
+        },
       ],
-      sort: null
+      sort: null,
     },
     {
       label: 'Full Featured',
@@ -72,21 +82,21 @@ export function QuickActions({ onApplyPreset }: QuickActionsProps) {
         {
           column: 'supports_vision',
           operator: 'equals',
-          value: true
+          value: true,
         },
         {
           column: 'supports_function_calling',
           operator: 'equals',
-          value: true
+          value: true,
         },
         {
           column: 'supports_response_schema',
           operator: 'equals',
-          value: true
-        }
+          value: true,
+        },
       ],
-      sort: null
-    }
+      sort: null,
+    },
   ]
 
   return (

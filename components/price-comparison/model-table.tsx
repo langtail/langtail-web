@@ -30,11 +30,25 @@ interface SortableHeaderProps {
   align?: 'left' | 'right' | 'center'
 }
 
-function SortableHeader({ column, label, sortState, onSort, align = 'left' }: SortableHeaderProps) {
+function SortableHeader({
+  column,
+  label,
+  sortState,
+  onSort,
+  align = 'left',
+}: SortableHeaderProps) {
   const isActive = sortState.column === column
 
   return (
-    <TableHead className={align === 'right' ? 'text-right' : align === 'center' ? 'text-center' : ''}>
+    <TableHead
+      className={
+        align === 'right'
+          ? 'text-right'
+          : align === 'center'
+            ? 'text-center'
+            : ''
+      }
+    >
       <Button
         variant="ghost"
         size="sm"
@@ -65,19 +79,19 @@ export function ModelTable({ models, sortState, onSort }: ModelTableProps) {
     return [...models].sort((a, b) => {
       const aValue = a[sortState.column!]
       const bValue = b[sortState.column!]
-      
+
       if (typeof aValue === 'boolean') {
         return sortState.direction === 'asc'
           ? Number(aValue) - Number(bValue)
           : Number(bValue) - Number(aValue)
       }
-      
+
       if (typeof aValue === 'number') {
         return sortState.direction === 'asc'
           ? aValue - (bValue as number)
           : (bValue as number) - aValue
       }
-      
+
       const aStr = String(aValue).toLowerCase()
       const bStr = String(bValue).toLowerCase()
       return sortState.direction === 'asc'
@@ -90,30 +104,106 @@ export function ModelTable({ models, sortState, onSort }: ModelTableProps) {
     <Table>
       <TableHeader>
         <TableRow className="hover:bg-gray-800/50 border-gray-700/50">
-          <SortableHeader column="model" label="Model" sortState={sortState} onSort={onSort} />
-          <SortableHeader column="litellm_provider" label="Provider" sortState={sortState} onSort={onSort} />
-          <SortableHeader column="max_input_tokens" label="Max Input Length" sortState={sortState} onSort={onSort} align="right" />
-          <SortableHeader column="max_output_tokens" label="Max Output Length" sortState={sortState} onSort={onSort} align="right" />
-          <SortableHeader column="input_cost_per_token" label="Input Price (per 1M tokens)" sortState={sortState} onSort={onSort} align="right" />
-          <SortableHeader column="output_cost_per_token" label="Output Price (per 1M tokens)" sortState={sortState} onSort={onSort} align="right" />
-          <SortableHeader column="cache_read_input_token_cost" label="Cache Read Price (per 1M tokens)" sortState={sortState} onSort={onSort} align="right" />
-          <SortableHeader column="supports_vision" label="Supports Vision" sortState={sortState} onSort={onSort} align="center" />
-          <SortableHeader column="supports_function_calling" label="Functions" sortState={sortState} onSort={onSort} align="center" />
-          <SortableHeader column="supports_parallel_function_calling" label="Parallel Functions" sortState={sortState} onSort={onSort} align="center" />
-          <SortableHeader column="supports_response_schema" label="Structured Output" sortState={sortState} onSort={onSort} align="center" />
-          <SortableHeader column="supports_prompt_caching" label="Prompt Caching" sortState={sortState} onSort={onSort} align="center" />
+          <SortableHeader
+            column="model"
+            label="Model"
+            sortState={sortState}
+            onSort={onSort}
+          />
+          <SortableHeader
+            column="litellm_provider"
+            label="Provider"
+            sortState={sortState}
+            onSort={onSort}
+          />
+          <SortableHeader
+            column="max_input_tokens"
+            label="Max Input Length"
+            sortState={sortState}
+            onSort={onSort}
+            align="right"
+          />
+          <SortableHeader
+            column="max_output_tokens"
+            label="Max Output Length"
+            sortState={sortState}
+            onSort={onSort}
+            align="right"
+          />
+          <SortableHeader
+            column="input_cost_per_token"
+            label="Input Price (per 1M tokens)"
+            sortState={sortState}
+            onSort={onSort}
+            align="right"
+          />
+          <SortableHeader
+            column="output_cost_per_token"
+            label="Output Price (per 1M tokens)"
+            sortState={sortState}
+            onSort={onSort}
+            align="right"
+          />
+          <SortableHeader
+            column="cache_read_input_token_cost"
+            label="Cache Read Price (per 1M tokens)"
+            sortState={sortState}
+            onSort={onSort}
+            align="right"
+          />
+          <SortableHeader
+            column="supports_vision"
+            label="Supports Vision"
+            sortState={sortState}
+            onSort={onSort}
+            align="center"
+          />
+          <SortableHeader
+            column="supports_function_calling"
+            label="Functions"
+            sortState={sortState}
+            onSort={onSort}
+            align="center"
+          />
+          <SortableHeader
+            column="supports_parallel_function_calling"
+            label="Parallel Functions"
+            sortState={sortState}
+            onSort={onSort}
+            align="center"
+          />
+          <SortableHeader
+            column="supports_response_schema"
+            label="Structured Output"
+            sortState={sortState}
+            onSort={onSort}
+            align="center"
+          />
+          <SortableHeader
+            column="supports_prompt_caching"
+            label="Prompt Caching"
+            sortState={sortState}
+            onSort={onSort}
+            align="center"
+          />
         </TableRow>
       </TableHeader>
       <TableBody>
         {models.length === 0 ? (
           <TableRow>
-            <TableCell colSpan={12} className="h-24 text-center text-muted-foreground">
+            <TableCell
+              colSpan={12}
+              className="h-24 text-center text-muted-foreground"
+            >
               No models found
             </TableCell>
           </TableRow>
         ) : (
           sortedModels.map((model, index) => (
-            <TableRow key={model.model} className="hover:bg-gray-800/50 border-gray-700/50">
+            <TableRow
+              key={model.model}
+              className="hover:bg-gray-800/50 border-gray-700/50"
+            >
               <TableCell className="font-medium">
                 {model.model.split('/').pop()}
               </TableCell>
@@ -121,19 +211,29 @@ export function ModelTable({ models, sortState, onSort }: ModelTableProps) {
                 <ProviderLogo model={model} />
               </TableCell>
               <TableCell className="text-right">
-                {formatNumber(model.max_input_tokens)}
+                {model.max_input_tokens !== null
+                  ? formatNumber(model.max_input_tokens)
+                  : '-'}
               </TableCell>
               <TableCell className="text-right">
-                {formatNumber(model.max_output_tokens)}
+                {model.max_output_tokens !== null
+                  ? formatNumber(model.max_output_tokens)
+                  : '-'}
               </TableCell>
               <TableCell className="text-right">
-                {formatPrice(model.input_cost_per_token)}
+                {model.input_cost_per_token !== null
+                  ? formatPrice(model.input_cost_per_token)
+                  : '-'}
               </TableCell>
               <TableCell className="text-right">
-                {formatPrice(model.output_cost_per_token)}
+                {model.output_cost_per_token !== null
+                  ? formatPrice(model.output_cost_per_token)
+                  : '-'}
               </TableCell>
               <TableCell className="text-right">
-                {formatPrice(model.cache_read_input_token_cost)}
+                {model.cache_read_input_token_cost !== null
+                  ? formatPrice(model.cache_read_input_token_cost)
+                  : '-'}
               </TableCell>
               <TableCell className="text-center">
                 {model.supports_vision ? (
