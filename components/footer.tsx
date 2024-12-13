@@ -21,6 +21,7 @@ const navigation = {
     },
     { name: 'Prompt ninja', href: 'https://langtail.com/prompt-ninja' },
     { name: 'Prompt improver', href: 'https://langtail.com/prompt-improver' },
+    { name: 'LLM Price Comparison', href: '/llm-price-comparison' },
   ],
   company: [
     { name: 'About', href: '/about' },

@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { Logo } from '@/components/logo'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Calculator } from 'lucide-react'
 
 export function SimpleNav() {
   const pathname = usePathname()
@@ -19,6 +19,13 @@ export function SimpleNav() {
           </Link>
 
           <div className="ml-auto flex items-center gap-x-8">
+            <Link
+              href="/llm-price-comparison"
+              className="hidden md:flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors group"
+            >
+              <Calculator className="h-4 w-4" />
+              Compare LLM Prices
+            </Link>
             <a
               href="https://langtail.com"
               target="_blank"
