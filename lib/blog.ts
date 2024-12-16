@@ -3,6 +3,7 @@ import path from 'path'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { BlogFrontmatterSchema, type BlogFrontmatter } from './types/blog'
 import { assetPrefix } from './utils'
+import remarkGfm from 'remark-gfm'
 
 import { MDXComponents } from '@/mdx-components'
 
@@ -41,8 +42,10 @@ export async function getBlogPost(slug: string) {
 
   const { frontmatter, content } = await compileMDX<BlogFrontmatter>({
     source: fileContent,
-    options: { parseFrontmatter: true },
     components: MDXComponents(),
+    options: {
+      parseFrontmatter: true,
+    },
   })
 
   return { frontmatter, content, slug }

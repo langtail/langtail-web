@@ -2,6 +2,7 @@ import type { MDXComponents } from 'mdx/types'
 import { CodeBlock } from '@/components/mdx-code-block'
 import { assetPrefix } from '@/lib/utils'
 import { ButtonLink } from '@/components/ui/button-link'
+import { BlogCarousel, BlogCarouselProps } from '@/components/blog-carousel'
 
 // This file is required to use MDX in `app` directory.
 export function MDXComponents(components: MDXComponents = {}): MDXComponents {
@@ -60,6 +61,9 @@ export function MDXComponents(components: MDXComponents = {}): MDXComponents {
         </CodeBlock>
       )
     },
+    BlogCarousel: ({ images }: BlogCarouselProps) => (
+      <BlogCarousel images={images} />
+    ),
     Button: ({ children, href }) => (
       <ButtonLink href={href}>{children}</ButtonLink>
     ),
