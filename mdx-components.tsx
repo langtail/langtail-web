@@ -62,7 +62,12 @@ export function MDXComponents(components: MDXComponents = {}): MDXComponents {
       )
     },
     BlogCarousel: ({ images }: BlogCarouselProps) => (
-      <BlogCarousel images={images} />
+      <BlogCarousel
+        images={images.map((image) => ({
+          ...image,
+          src: `${assetPrefix}${image.src}`,
+        }))}
+      />
     ),
     Button: ({ children, href }) => (
       <ButtonLink href={href}>{children}</ButtonLink>
