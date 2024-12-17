@@ -51,6 +51,7 @@
     "@udecode/plate-common": "^36",
     "ai": "4.0.10",
     "autoprefixer": "10.4.15",
+    "browser-image-resizer": "^2.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",

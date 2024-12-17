@@ -25,6 +25,10 @@ const navigation = {
       name: 'LLM Price Comparison',
       href: 'https://langtail.com/llm-price-comparison',
     },
+    {
+      name: 'Gemini Bounding Boxes',
+      href: '/gemini-bounding-boxes',
+    },
   ],
   company: [
     { name: 'About', href: '/about' },
