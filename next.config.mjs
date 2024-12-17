@@ -67,6 +67,10 @@ const nextConfig = {
         source: '/images/:all*',
         headers: [
           {
+            key: 'Access-Control-Allow-Origin',
+            value: allowedOrigins,
+          },
+          {
             key: 'Cache-Control',
             value:
               'public, max-age=31536000, immutable, stale-while-revalidate=86400',
@@ -92,7 +96,7 @@ const nextConfig = {
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : `http://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`,
   images: {
-    domains: ['langtail-web.vercel.app'],
+    domains: ['langtail.com', 'langtail-web.vercel.app'],
   },
 }
 
