@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 import { assetPrefix } from '@/lib/utils'
-import { readAndCompressImage } from 'browser-image-resizer'
+import type { readAndCompressImage as ReadAndCompressImageType } from 'browser-image-resizer'
 
 interface ImagePreset {
   id: string
@@ -36,10 +36,15 @@ const presets: ImagePreset[] = [
 
 async function convertImageToBase64(imageUrl: string): Promise<string> {
   try {
+    if (typeof window === 'undefined') {
+      return imageUrl
+    }
+
     const response = await fetch(imageUrl)
     const blob = await response.blob()
     const file = new File([blob], 'image.jpg', { type: blob.type })
 
+    const { readAndCompressImage } = await import('browser-image-resizer')
     const config = {
       quality: 0.7,
       maxWidth: 800,

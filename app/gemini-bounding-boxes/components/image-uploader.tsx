@@ -2,7 +2,7 @@
 
 import { ChangeEvent } from 'react'
 import { Upload } from 'lucide-react'
-import { readAndCompressImage } from 'browser-image-resizer'
+import type { readAndCompressImage as ReadAndCompressImageType } from 'browser-image-resizer'
 
 interface ImageUploaderProps {
   onImageUpload: (imageUrl: string) => void
@@ -13,6 +13,11 @@ export function ImageUploader({ onImageUpload }: ImageUploaderProps) {
     const file = e.target.files?.[0]
     if (file) {
       try {
+        if (typeof window === 'undefined') {
+          return
+        }
+
+        const { readAndCompressImage } = await import('browser-image-resizer')
         const config = {
           quality: 0.7,
           maxWidth: 800,
