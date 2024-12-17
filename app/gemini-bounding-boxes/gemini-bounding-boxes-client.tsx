@@ -103,6 +103,20 @@ export function GeminiBoundingBoxesClient() {
             )}
           </div>
         </Card>
+
+        <div className="text-center mt-8 text-sm text-muted-foreground">
+          Built with{' '}
+          <a
+            href="https://langtail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 underline"
+          >
+            Langtail
+          </a>
+          , a low code platform that helps non-developers test and iterate on AI
+          apps.
+        </div>
       </div>
     </div>
   )
