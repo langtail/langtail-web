@@ -10,6 +10,7 @@ import { Card } from '@/components/ui/card'
 import type { Annotation } from './types'
 import { X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { apiFetch } from '@/lib/api-utils'
 
 export function GeminiBoundingBoxesClient() {
   const [imageUrl, setImageUrl] = useState<string | null>(null)
@@ -28,7 +29,7 @@ export function GeminiBoundingBoxesClient() {
 
     setIsLoading(true)
     try {
-      const response = await fetch('/api/gemini-bounds', {
+      const response = await apiFetch('/api/gemini-bounds', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
