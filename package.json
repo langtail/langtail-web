@@ -103,6 +103,7 @@
     "@types/mixpanel-browser": "^2.50.2",
     "@types/prismjs": "^1.26.5",
     "@types/react-syntax-highlighter": "^15.5.11",
-    "@types/request-ip": "^0.0.41"
+    "@types/request-ip": "^0.0.41",
+    "tsx": "^4.19.2"
   }
 }
