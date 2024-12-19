@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3002",
-    "build": "next build",
+    "build": "tsx scripts/generate-sitemap.ts && next build",
     "start": "next start",
     "lint": "next lint",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "generate-sitemap": "tsx scripts/generate-sitemap.ts"
   },
   "dependencies": {
     "@ai-sdk/openai": "1.0.5",

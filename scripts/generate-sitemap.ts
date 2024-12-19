@@ -1,7 +1,5 @@
-import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
-import { headers } from 'next/headers'
 
 // Helper function to get blog post slugs
 function getBlogPosts() {
@@ -26,30 +24,22 @@ function getToolRoutes() {
     )
 }
 
-export async function GET() {
-  try {
-    const headersList = headers()
-    const apiKey = headersList.get('x-api-key')
+function generateSitemap() {
+  const links = [...getToolRoutes(), ...getBlogPosts(), '/blog']
 
-    if (
-      !process.env.SITEMAP_API_KEY ||
-      apiKey !== process.env.SITEMAP_API_KEY
-    ) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-    }
-
-    const links = {
-      tools: getToolRoutes(),
-      blogPosts: getBlogPosts(),
-      pages: ['/blog'],
-    }
-
-    return NextResponse.json(links)
-  } catch (error) {
-    console.error('Error generating sitemap:', error)
-    return NextResponse.json(
-      { error: 'Failed to generate sitemap' },
-      { status: 500 }
-    )
+  // Ensure public directory exists
+  const publicDir = path.join(process.cwd(), 'public')
+  if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir, { recursive: true })
   }
+
+  // Write sitemap to public directory
+  fs.writeFileSync(
+    path.join(publicDir, 'sitemap.json'),
+    JSON.stringify(links, null, 2)
+  )
+
+  console.log('✅ Sitemap generated successfully')
 }
+
+generateSitemap()
