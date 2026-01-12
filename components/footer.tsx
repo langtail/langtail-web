@@ -32,7 +32,6 @@ const navigation = {
   ],
   company: [
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
     { name: 'Blog', href: '/blog' },
   ],
   legal: [
